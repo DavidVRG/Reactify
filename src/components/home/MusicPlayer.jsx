@@ -4,6 +4,7 @@ import { Duration } from '../utils/Duration'
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
 import { getAuth } from 'firebase/auth'
+import { toast } from 'react-toastify'
 
 export default function MusicPlayer({ setIsPlaying }) {
 
@@ -74,15 +75,19 @@ export default function MusicPlayer({ setIsPlaying }) {
 
     // Update user favorite songs
     function updateFavoriteSongs(type) {
-        const userRef = doc(db, "users", auth.currentUser.uid)
-        if (type === "add") {
-            updateDoc(userRef, {
-                favoriteSongs: arrayUnion(currentSong.mp3)
-            });
+        if(auth.currentUser) {
+            const userRef = doc(db, "users", auth.currentUser.uid)
+            if (type === "add") {
+                updateDoc(userRef, {
+                    favoriteSongs: arrayUnion(currentSong.mp3)
+                });
+            } else {
+                updateDoc(userRef, {
+                    favoriteSongs: arrayRemove(currentSong.mp3)
+                });
+            }
         } else {
-            updateDoc(userRef, {
-                favoriteSongs: arrayRemove(currentSong.mp3)
-            });
+            toast.error("You are not logged in!")
         }
     }
 

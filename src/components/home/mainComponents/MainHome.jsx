@@ -1,10 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { MainContext } from '../../../context/MainContext'
 import MobileSideBar from '../MobileSidebar'
 import { Duration } from '../../utils/Duration'
 import { getAuth } from 'firebase/auth'
 
 export default function MainHome({ setCurrentSong, setIsPlaying, setCurrentMainComponent, setCurrentCollection }) {
+
+  const heightRef = useRef(null)
+  const [height, setHeight] = useState(0)
+  useEffect(() => {
+    setHeight(heightRef.current.clientHeight)
+  }, [])
 
   // Import auth from firebase
   const auth = getAuth()
@@ -23,7 +29,7 @@ export default function MainHome({ setCurrentSong, setIsPlaying, setCurrentMainC
       </div>
 
       <div className='mb-10 flex justify-between text-white'>
-        <h1 className='text-3xl text-white font-bold'>Hello {auth.currentUser.displayName}!</h1>
+        <h1 className='text-3xl text-white font-bold'>Hello {auth.currentUser ? (auth.currentUser.displayName) : "Visitor"}!</h1>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 lg:hidden" onClick={() => setShowMobileSidebar(true)}>
           <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clipRule="evenodd" />
         </svg>
@@ -54,8 +60,8 @@ export default function MainHome({ setCurrentSong, setIsPlaying, setCurrentMainC
       <section>
         <h2 className='text-2xl font-bold text-white mb-6'>Playlist</h2>
 
-        <div className="relative overflow-x-auto text-white min-h-screen">
-          <table className="w-full text-sm">
+        <div className={`relative overflow-x-auto text-white`} style={{height: `${height + 110}px`}}>
+          <table className="w-full text-sm"> 
 
             <thead className="text-xs uppercase">
               <tr>
@@ -68,7 +74,7 @@ export default function MainHome({ setCurrentSong, setIsPlaying, setCurrentMainC
               </tr>
             </thead>
 
-            <tbody>
+            <tbody ref={heightRef}>
 
               {songs.length !== 0 && (
                 songs.map((song, id) => {

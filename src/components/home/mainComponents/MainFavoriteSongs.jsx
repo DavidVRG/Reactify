@@ -1,13 +1,9 @@
 import React, { useContext, useState } from 'react'
 import MobileSideBar from '../MobileSidebar'
-import { getAuth } from 'firebase/auth'
 import { Duration } from '../../utils/Duration'
 import { MainContext } from '../../../context/MainContext'
 
 export default function MainFavoriteSongs({ setCurrentMainComponent, setCurrentSong, setIsPlaying }) {
-
-  // Import auth from firebase
-  const auth = getAuth()
 
   // Show/hide mobile sidebar
   const [showMobileSidebar, setShowMobileSidebar] = useState(false)

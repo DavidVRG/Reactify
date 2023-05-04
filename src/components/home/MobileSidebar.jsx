@@ -25,7 +25,7 @@ export default function MobileSideBar({ setShowMobileSidebar, setCurrentMainComp
         <div>
 
             <div className='mb-6 flex justify-between text-white'>
-                <h1 className='text-3xl text-white font-bold'>Hello {auth.currentUser.displayName}!</h1>
+                <h1 className='text-3xl text-white font-bold'>Hello {auth.currentUser ? (auth.currentUser.displayName) : "Visitor"}!</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10" onClick={() => setShowMobileSidebar(false)}>
                     <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clipRule="evenodd" />
                 </svg>
@@ -65,12 +65,21 @@ export default function MobileSideBar({ setShowMobileSidebar, setCurrentMainComp
                     <span>Favorite songs</span>
                 </li>
 
-                <li className='flex items-center gap-2 cursor-pointer hover:text-white transition duration-200 ease-in-out' onClick={handleSignOut}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-                        <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clipRule="evenodd" />
-                    </svg>
-                    <span>Sign Out</span>
-                </li>
+                {auth.currentUser ? (
+                    <li className='flex items-center gap-2 cursor-pointer hover:text-white transition duration-200 ease-in-out' onClick={handleSignOut}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                            <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clipRule="evenodd" />
+                        </svg>
+                        <span>Sign Out</span>
+                    </li>
+                ) : (
+                    <li className='flex items-center gap-2 cursor-pointer hover:text-white transition duration-200 ease-in-out' onClick={() => navigate("/sign-in")}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                        <span>Sign In</span>
+                    </li>
+                )}
 
             </ul>
 

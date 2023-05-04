@@ -59,10 +59,12 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "users", auth.currentUser.uid), (doc) => {
-      setFavoriteSongs(doc.data().favoriteSongs)
-    })
-    return () => unsub
+    if(auth.currentUser) {
+      const unsub = onSnapshot(doc(db, "users", auth.currentUser.uid), (doc) => {
+        setFavoriteSongs(doc.data().favoriteSongs)
+      })
+      return () => unsub
+    }
   }, [])
 
   return (
