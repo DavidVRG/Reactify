@@ -1,0 +1,32 @@
+[
+    {
+       "author": "Favorite Songs",
+       "image": "collections/favoriteSongs.jpg",
+       "type" : "MainFavoriteSongs"
+    },
+    {
+       "author": "Tobu",
+       "image": "collections/Tobu.jpg",
+       "type" : "Tobu"
+    },
+    {
+       "author": "Janji",
+       "image": "collections/Janji.jpg",
+       "type" : "Janji"
+    },
+    {
+       "author": "ElectroLight",
+       "image": "collections/ElectroLight.jpg",
+       "type" : "ElectroLight"
+    },
+    {
+       "author": "Elektronomia",
+       "image": "collections/Elektronomia.jpg",
+       "type" : "Elektronomia"
+    },
+    {
+       "author": "Jim Yosef",
+       "image": "collections/JimYosef.jpg",
+       "type" : "Jim Yosef"
+    }
+ ]
