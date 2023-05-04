@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4e4f52 #393c3f;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #393c3f;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #4e4f52;
+    border-radius: 20px;
+    border: none;
+}
+

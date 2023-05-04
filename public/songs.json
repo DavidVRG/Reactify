@@ -1,0 +1,44 @@
+[
+   {
+      "author": "Tobu",
+      "title": "Hope",
+      "mp3": "songs/TobuHope.mp3",
+      "image": "songs/TobuHope.jpg",
+      "collection": "Tobu"
+   },
+   {
+      "author": "Janji",
+      "title": "Heroes Tonight",
+      "mp3": "songs/JanjiHeroes.mp3",
+      "image": "songs/JanjiHeroes.jpg",
+      "collection": "Janji"
+   },
+   {
+      "author": "ElectroLight",
+      "title": "Symbolism",
+      "mp3": "songs/ElectroLightSimbolism.mp3",
+      "image": "songs/ElectroLightSimbolism.jpg",
+      "collection": "ElectroLight"
+   },
+   {
+      "author": "JPB",
+      "title": "High",
+      "mp3": "songs/JPBHIGH.mp3",
+      "image": "songs/JPBHIGH.jpg",
+      "collection": "JPB"
+   },
+   {
+      "author": "Elektronomia",
+      "title": "Limitless",
+      "mp3": "songs/ElektronomiaLimitless.mp3",
+      "image": "songs/ElektronomiaLimitless.jpg",
+      "collection": "Elektronomia"
+   },
+   {
+      "author": "Jim Yosef",
+      "title": "Link",
+      "mp3": "songs/JimYosefLink.mp3",
+      "image": "songs/JimYosefLink.jpg",
+      "collection": "Jim Yosef"
+   }
+]
